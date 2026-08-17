@@ -140,6 +140,7 @@ npm run model:gen -- User --attributes name:string,email:string
 
 ```text
 .
+├── .vscode/
 ├── migrations/
 ├── src/
 │   ├── app.js
