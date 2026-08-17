@@ -39,7 +39,7 @@ DB_NAME=node_boilerplate
 DB_USER=
 DB_PASSWORD=
 DB_HOST=
-DB_DIALECT=mysql
+DB_DIALECT=postgres
 DB_PORT=5432
 PORT=8080
 ```
