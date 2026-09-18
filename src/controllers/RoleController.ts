@@ -8,7 +8,7 @@ import { ResponseMessage } from '../utils/ResponseMessage';
 const rolesServices = new RolesServices();
 
 class RoleController extends BaseController {
-  async getAllRoles(req: Request, res: Response, next: NextFunction): Promise<void> {
+  getAllRoles = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.getAllRoles });
       const roles = await rolesServices.getAllRoles(req);
@@ -23,9 +23,9 @@ class RoleController extends BaseController {
       logger.error({ error, context: loggerContexts.getAllRoles });
       next(error);
     }
-  }
+  };
 
-  async getRole(req: Request, res: Response, next: NextFunction): Promise<void> {
+  getRole = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.getRole });
       const role = await rolesServices.getRole(req.params.id);
@@ -40,9 +40,9 @@ class RoleController extends BaseController {
       logger.error({ error, context: loggerContexts.getRole });
       next(error);
     }
-  }
+  };
 
-  async createRole(req: Request, res: Response, next: NextFunction): Promise<void> {
+  createRole = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.createRole });
       logger.info({
@@ -78,9 +78,9 @@ class RoleController extends BaseController {
       logger.error({ error, context: loggerContexts.createRole });
       next(error);
     }
-  }
+  };
 
-  async updateRole(req: Request, res: Response, next: NextFunction): Promise<void> {
+  updateRole = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.updateRole });
       logger.info({
@@ -127,9 +127,9 @@ class RoleController extends BaseController {
       logger.error({ error, context: loggerContexts.updateRole });
       next(error);
     }
-  }
+  };
 
-  async deleteRole(req: Request, res: Response, next: NextFunction): Promise<void> {
+  deleteRole = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.deleteRole });
       const result = await rolesServices.deleteRole(req.params.id);
@@ -144,7 +144,7 @@ class RoleController extends BaseController {
       logger.error({ error, context: loggerContexts.deleteRole });
       next(error);
     }
-  }
+  };
 }
 
 export { RoleController };

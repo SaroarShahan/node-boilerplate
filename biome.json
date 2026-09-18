@@ -43,6 +43,9 @@
         "noThenProperty": "off",
         "useIterableCallbackReturn": "off",
         "noDoubleEquals": "off"
+      },
+      "complexity": {
+        "noStaticOnlyClass": "off"
       }
     }
   },

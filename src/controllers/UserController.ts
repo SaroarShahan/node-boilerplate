@@ -8,7 +8,7 @@ import { ResponseMessage } from '../utils/ResponseMessage';
 const usersServices = new UsersServices();
 
 class UserController extends BaseController {
-  async getAllUsers(req: Request, res: Response, next: NextFunction): Promise<void> {
+  getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -30,9 +30,9 @@ class UserController extends BaseController {
       });
       next(error);
     }
-  }
+  };
 
-  async getUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+  getUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -57,9 +57,9 @@ class UserController extends BaseController {
       });
       next(error);
     }
-  }
+  };
 
-  async createUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+  createUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -84,9 +84,9 @@ class UserController extends BaseController {
       });
       next(error);
     }
-  }
+  };
 
-  async updateUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+  updateUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -111,9 +111,9 @@ class UserController extends BaseController {
       });
       next(error);
     }
-  }
+  };
 
-  async deleteUser(req: Request, res: Response, next: NextFunction): Promise<void> {
+  deleteUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -133,7 +133,7 @@ class UserController extends BaseController {
       });
       next(error);
     }
-  }
+  };
 }
 
 export { UserController };

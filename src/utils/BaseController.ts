@@ -3,9 +3,9 @@ import { httpStatus } from '../constants/HttpStatusCode';
 import { CreateResponse } from './CreateResponse';
 
 class BaseController {
-  httpStatusCode;
-  appCode;
-  createResponse;
+  declare httpStatusCode: typeof httpStatus;
+  declare appCode: typeof appCode;
+  declare createResponse: CreateResponse;
 }
 
 BaseController.prototype.appCode = appCode;

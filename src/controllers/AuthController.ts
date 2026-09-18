@@ -9,11 +9,7 @@ import { ResponseMessage } from '../utils/ResponseMessage';
 const authServices = new AuthServices();
 
 class AuthController extends BaseController {
-  constructor() {
-    super();
-  }
-
-  async register(req: Request, res: Response, next: NextFunction): Promise<void> {
+  register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.register });
       logger.info({
@@ -45,9 +41,9 @@ class AuthController extends BaseController {
       logger.error({ error, context: loggerContexts.register });
       next(error);
     }
-  }
+  };
 
-  async login(req: Request, res: Response, next: NextFunction): Promise<void> {
+  login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({ message: 'Start executing method', context: loggerContexts.login });
       logger.info({
@@ -73,7 +69,7 @@ class AuthController extends BaseController {
       logger.error({ error, context: loggerContexts.login });
       next(error);
     }
-  }
+  };
 }
 
 export { AuthController };

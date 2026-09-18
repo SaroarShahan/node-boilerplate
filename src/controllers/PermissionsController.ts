@@ -8,7 +8,7 @@ import { ResponseMessage } from '../utils/ResponseMessage';
 const permissionServices = new PermissionServices();
 
 class PermissionsController extends BaseController {
-  async getAllPermissions(req: Request, res: Response, next: NextFunction): Promise<void> {
+  getAllPermissions = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -26,9 +26,9 @@ class PermissionsController extends BaseController {
       logger.error({ error, context: loggerContexts.getAllPermissions });
       next(error);
     }
-  }
+  };
 
-  async getPermission(req: Request, res: Response, next: NextFunction): Promise<void> {
+  getPermission = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -46,9 +46,9 @@ class PermissionsController extends BaseController {
       logger.error({ error, context: loggerContexts.getPermission });
       next(error);
     }
-  }
+  };
 
-  async createPermission(req: Request, res: Response, next: NextFunction): Promise<void> {
+  createPermission = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -90,9 +90,9 @@ class PermissionsController extends BaseController {
       logger.error({ error, context: loggerContexts.createPermission });
       next(error);
     }
-  }
+  };
 
-  async updatePermission(req: Request, res: Response, next: NextFunction): Promise<void> {
+  updatePermission = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -138,9 +138,9 @@ class PermissionsController extends BaseController {
       logger.error({ error, context: loggerContexts.updatePermission });
       next(error);
     }
-  }
+  };
 
-  async deletePermission(req: Request, res: Response, next: NextFunction): Promise<void> {
+  deletePermission = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       logger.info({
         message: 'Start executing method',
@@ -160,7 +160,7 @@ class PermissionsController extends BaseController {
       logger.error({ error, context: loggerContexts.deletePermission });
       next(error);
     }
-  }
+  };
 }
 
 export { PermissionsController };
