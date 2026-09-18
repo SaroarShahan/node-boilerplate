@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "CommonJS",
+    "rootDir": ".",
+    "outDir": "dist",
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noImplicitAny": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "types": ["node"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.js"],
+  "exclude": ["dist", "node_modules", "migrations", "seeders"]
+}
