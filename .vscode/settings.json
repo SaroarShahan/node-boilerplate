@@ -4,10 +4,10 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
     "source.addMissingImports": "explicit",
     "source.removeUnusedImports": "explicit",
-    "source.organizeImports.biome": "explicit"
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "explicit",
   },
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
