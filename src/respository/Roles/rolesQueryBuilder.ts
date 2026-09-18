@@ -1,4 +1,5 @@
 import { Op } from 'sequelize';
+
 import { limitAndOffsetBuilder } from '../../utils';
 
 const buildRolesQuery = (query: any = {}) => ({

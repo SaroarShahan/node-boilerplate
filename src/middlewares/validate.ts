@@ -1,5 +1,7 @@
+import type { NextFunction, Request, Response } from 'express';
+
 const validate = (schema: any = {}) => {
-  return (req: any, res: any, next: any) => {
+  return (req: Request, _res: Response, next: NextFunction) => {
     try {
       if (schema.params) {
         req.params = schema.params.parse(req.params);

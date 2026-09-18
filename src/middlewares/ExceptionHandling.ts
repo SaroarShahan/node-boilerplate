@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
-
 import { BaseError } from 'sequelize';
+
 import { appCode } from '../constants/AppCode';
 import { httpStatus } from '../constants/HttpStatusCode';
 import { CreateResponse } from '../utils/CreateResponse';

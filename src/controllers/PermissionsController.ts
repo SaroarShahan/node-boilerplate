@@ -1,4 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
+
 import { loggerContexts } from '../constants/loggerContexts';
 import { PermissionServices } from '../services/Permissions/PermissionServices';
 import BaseController from '../utils/BaseController';

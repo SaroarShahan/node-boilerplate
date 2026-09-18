@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+
 import { RoleModel, UserModel } from './../../models';
 import type { AppHttpError } from '../../types/app';
 import { generateToken } from '../../utils/jwt';

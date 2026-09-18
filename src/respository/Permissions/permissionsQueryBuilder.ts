@@ -1,4 +1,5 @@
 import { Op } from 'sequelize';
+
 import { limitAndOffsetBuilder } from './../../utils';
 
 const permissionsQueryBuilder = (query: any = {}) => ({
