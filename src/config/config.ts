@@ -2,26 +2,6 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-type AppConfig = {
-  development: {
-    database: string | undefined;
-    username: string | undefined;
-    password: string | undefined;
-    host: string | undefined;
-    port: number;
-    dialect: string | undefined;
-    logging: typeof console.log;
-    use_env_variable?: string;
-    jwtSecret?: string;
-    jwtExpiresIn?: string;
-  };
-  corsOptions: {
-    origin: string[] | string;
-    methods: string;
-    allowedHeaders: string;
-  };
-};
-
 const config = {
   development: {
     database: process.env.DB_NAME,
@@ -38,6 +18,6 @@ const config = {
     allowedHeaders:
       'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token,x-client-secret, Authorization,Access-Control-Allow-Origin',
   },
-} satisfies AppConfig;
+} as const;
 
 export default config;
