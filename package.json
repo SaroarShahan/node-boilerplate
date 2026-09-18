@@ -9,7 +9,8 @@
     "prepare": "husky",
     "dev": "nodemon src/Index.js",
     "start": "node src/Index.js",
-    "format": "prettier --write .",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
     "migrate": "sequelize-cli db:migrate",
     "migrate:undo": "sequelize-cli db:migrate:undo",
     "migrate:undo:all": "sequelize-cli db:migrate:undo:all",
@@ -32,6 +33,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.5.14",
     "@types/node": "^22.20.3",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1",
@@ -41,7 +43,7 @@
   },
   "lint-staged": {
     "*.js": [
-      "prettier --write",
+      "biome format --write",
       "node --check"
     ]
   },
