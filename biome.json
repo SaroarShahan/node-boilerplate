@@ -31,7 +31,8 @@
       "preset": "recommended",
       "correctness": {
         "noConstructorReturn": "off",
-        "noUndeclaredVariables": "error"
+        "noUndeclaredVariables": "error",
+        "noUnusedImports": "error"
       },
       "style": {
         "noNonNullAssertion": "warn",
