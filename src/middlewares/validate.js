@@ -1,0 +1,26 @@
+const validate = (schema = {}) => {
+  return (req, res, next) => {
+    try {
+      if (schema.params) {
+        req.params = schema.params.parse(req.params);
+      }
+
+      if (schema.query) {
+        req.query = schema.query.parse(req.query);
+      }
+
+      if (schema.body) {
+        req.body = schema.body.parse(req.body);
+      }
+
+      return next();
+    } catch (error) {
+      error.httpStatusCode = 400;
+      error.value = true;
+      error.type = 'validation';
+      return next(error);
+    }
+  };
+};
+
+module.exports = validate;

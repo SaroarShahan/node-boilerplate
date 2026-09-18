@@ -36,10 +36,14 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.5.1",
     "nodemon": "^3.1.14",
+    "prettier": "^3.9.8",
     "sequelize-cli": "^6.6.5"
   },
   "lint-staged": {
-    "*.js": "node --check"
+    "*.js": [
+      "prettier --write",
+      "node --check"
+    ]
   },
   "overrides": {
     "cls-rtracer": {
