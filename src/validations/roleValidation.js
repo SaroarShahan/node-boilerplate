@@ -20,5 +20,7 @@ module.exports = {
   },
   getRoleSchema: { params: idParamSchema },
   deleteRoleSchema: { params: idParamSchema },
-  getRolesSchema: { query: pageLimitQuerySchema.extend({ search: z.string().trim().optional() }) },
+  getRolesSchema: {
+    query: pageLimitQuerySchema.extend({ search: z.string().trim().optional() }),
+  },
 };

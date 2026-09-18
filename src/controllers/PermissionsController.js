@@ -14,7 +14,10 @@ class PermissionsController extends BaseController {
 
   async getAllPermissions(req, res, next) {
     try {
-      logger.info({ message: 'Start executing method', context: loggerContexts.getAllPermissions });
+      logger.info({
+        message: 'Start executing method',
+        context: loggerContexts.getAllPermissions,
+      });
       const permissions = await permissionServices.getAllPermissions(req);
       const responseObj = new ResponseMessage();
 
@@ -31,7 +34,10 @@ class PermissionsController extends BaseController {
 
   async getPermission(req, res, next) {
     try {
-      logger.info({ message: 'Start executing method', context: loggerContexts.getPermission });
+      logger.info({
+        message: 'Start executing method',
+        context: loggerContexts.getPermission,
+      });
       const permission = await permissionServices.getPermission(req.params.id);
       const responseObj = new ResponseMessage();
 
@@ -48,7 +54,10 @@ class PermissionsController extends BaseController {
 
   async createPermission(req, res, next) {
     try {
-      logger.info({ message: 'Start executing method', context: loggerContexts.createPermission });
+      logger.info({
+        message: 'Start executing method',
+        context: loggerContexts.createPermission,
+      });
       logger.info({
         message: 'Create Permission Req Body',
         context: loggerContexts.createPermission,
@@ -70,7 +79,11 @@ class PermissionsController extends BaseController {
           responseObj.httpStatusCode = 409;
           responseObj.message = 'Permission with this name already exists';
         } else {
-          responseObj.data = await permissionServices.createPermission({ name, label, module });
+          responseObj.data = await permissionServices.createPermission({
+            name,
+            label,
+            module,
+          });
           responseObj.httpStatusCode = 201;
           responseObj.message = 'Permission created successfully';
         }
@@ -85,7 +98,10 @@ class PermissionsController extends BaseController {
 
   async updatePermission(req, res, next) {
     try {
-      logger.info({ message: 'Start executing method', context: loggerContexts.updatePermission });
+      logger.info({
+        message: 'Start executing method',
+        context: loggerContexts.updatePermission,
+      });
       logger.info({
         message: 'Update Permission Req Body',
         context: loggerContexts.updatePermission,
@@ -130,7 +146,10 @@ class PermissionsController extends BaseController {
 
   async deletePermission(req, res, next) {
     try {
-      logger.info({ message: 'Start executing method', context: loggerContexts.deletePermission });
+      logger.info({
+        message: 'Start executing method',
+        context: loggerContexts.deletePermission,
+      });
       const result = await permissionServices.deletePermission(req.params.id);
       const responseObj = new ResponseMessage();
 

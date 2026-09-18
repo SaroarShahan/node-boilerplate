@@ -64,7 +64,9 @@ class RoleController extends BaseController {
         responseObj.httpStatusCode = 400;
         responseObj.message = 'At least one permission is required';
       } else {
-        const existingRole = await rolesServices.roleRepository.findOne({ where: { name } });
+        const existingRole = await rolesServices.roleRepository.findOne({
+          where: { name },
+        });
         if (existingRole) {
           responseObj.httpStatusCode = 409;
           responseObj.message = 'Role with this name already exists';
@@ -102,7 +104,9 @@ class RoleController extends BaseController {
         responseObj.httpStatusCode = 404;
         responseObj.message = 'Role not found';
       } else {
-        const existingRole = await rolesServices.roleRepository.findOne({ where: { name } });
+        const existingRole = await rolesServices.roleRepository.findOne({
+          where: { name },
+        });
         if (existingRole && String(existingRole.id) !== String(role.id)) {
           responseObj.httpStatusCode = 409;
           responseObj.message = 'Role with this name already exists';
@@ -113,7 +117,10 @@ class RoleController extends BaseController {
           responseObj.httpStatusCode = 400;
           responseObj.message = 'At least one permission is required';
         } else {
-          responseObj.data = await rolesServices.updateRole(req.params.id, { name, permissions });
+          responseObj.data = await rolesServices.updateRole(req.params.id, {
+            name,
+            permissions,
+          });
           responseObj.httpStatusCode = 200;
           responseObj.message = 'Role updated successfully';
         }
