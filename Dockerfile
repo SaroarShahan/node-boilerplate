@@ -15,3 +15,8 @@ COPY . .
 
 # --- STAGE 2: Production Runtime ---
 FROM node:22-alpine AS runner
+
+# Set environment to production
+ENV NODE_ENV=production
+
+WORKDIR /app
