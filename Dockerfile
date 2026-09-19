@@ -12,3 +12,6 @@ RUN npm ci
 
 # Copy the rest of the application source code
 COPY . .
+
+# --- STAGE 2: Production Runtime ---
+FROM node:22-alpine AS runner
