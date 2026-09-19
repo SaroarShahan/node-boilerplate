@@ -12,6 +12,7 @@ const config = {
     dialect: process.env.DB_DIALECT,
     logging: console.log,
   },
+  apiBaseUri: '/api/v1',
   corsOptions: {
     origin: process.env.CORSURL ? process.env.CORSURL.split(',') : '*',
     methods: 'GET,POST,PATCH,PUT,DELETE',

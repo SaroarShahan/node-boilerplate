@@ -9,11 +9,9 @@ import { resourceNotFound } from './middlewares/ResourcesNotFound';
 import { RouteBinder } from './routes';
 import { logger } from './utils/logger';
 
-const apiBaseUri = '/api/v1';
-
 class App {
   initRoutes(app: Application): void {
-    app.use(apiBaseUri, RouteBinder.bindRoutes());
+    app.use(config.apiBaseUri, RouteBinder.bindRoutes());
 
     logger.info({
       message: '########## Routes initialized ###########',
@@ -67,6 +65,7 @@ class App {
   init(): Application {
     const app = express();
     app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
     app.use(rTracer.expressMiddleware());
     this.initSecurity(app);
     this.initGlobalVariable();
