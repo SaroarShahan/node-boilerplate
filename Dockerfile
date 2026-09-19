@@ -1,6 +1,13 @@
 # --- STAGE 1: Build & Install Dependencies ---
 FROM node:24-alpine AS builder
 
+# Pin npm@11: npm@latest (12+) defaults allow-remote=none and blocks
+# GitHub Packages tarballs (@cheqplease/*) with EALLOWREMOTE; allowScripts
+# also defaults off and would break native deps like canvas.
+RUN apk update && apk upgrade --no-cache \
+    && npm install -g npm@11 \
+    && npm cache clean --force
+
 # Set the working directory
 WORKDIR /app
 
@@ -30,7 +37,8 @@ COPY --from=builder /app .
 RUN npm prune --production
 
 # Expose the port your app runs on
-EXPOSE 3000
+EXPOSE 8080
+USER nodejs
 
 # Run the app directly with node instead of npm for better signal handling
-CMD ["node", "src/Index.js"]
+CMD ["node", "build/Index.js"]
