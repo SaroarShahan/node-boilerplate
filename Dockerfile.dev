@@ -1,0 +1,2 @@
+# --- STAGE 1: Build & Install Dependencies ---
+FROM node:24-alpine AS base
