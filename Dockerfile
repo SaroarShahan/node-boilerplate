@@ -33,4 +33,4 @@ RUN npm prune --production
 EXPOSE 3000
 
 # Run the app directly with node instead of npm for better signal handling
-CMD ["node", "src/index.js"]
+CMD ["node", "src/Index.js"]
