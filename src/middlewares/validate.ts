@@ -5,7 +5,8 @@ interface Parser<T = Record<string, unknown>> {
 }
 
 interface ValidationSchema {
-  params?: Parser<Record<string, string>>;
+  // Allow values to be string, number, or any primitive that your schemas coerce them into
+  params?: Parser<Record<string, string | number | boolean>>;
   query?: Parser<Record<string, unknown>>;
   body?: Parser<unknown>;
 }
@@ -14,18 +15,17 @@ const validate = (schema: ValidationSchema = {}) => {
   return (req: Request, _res: Response, next: NextFunction): void => {
     try {
       if (schema.params) {
-        req.params = schema.params.parse(req.params);
+        //
+        req.params = schema.params.parse(req.params) as unknown as Record<string, string>;
       }
 
       if (schema.query) {
         const parsedQuery = schema.query.parse(req.query);
 
-        // Clean out original unparsed keys safely
         for (const key of Object.keys(req.query)) {
           delete req.query[key];
         }
 
-        // Assign newly parsed and cast values
         Object.assign(req.query, parsedQuery);
       }
 
