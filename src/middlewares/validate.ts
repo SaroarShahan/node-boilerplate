@@ -1,7 +1,17 @@
 import type { NextFunction, Request, Response } from 'express';
 
-const validate = (schema: any = {}) => {
-  return (req: Request, _res: Response, next: NextFunction) => {
+interface Parser<T = Record<string, unknown>> {
+  parse: (data: unknown) => T;
+}
+
+interface ValidationSchema {
+  params?: Parser<Record<string, string>>;
+  query?: Parser<Record<string, unknown>>;
+  body?: Parser<unknown>;
+}
+
+const validate = (schema: ValidationSchema = {}) => {
+  return (req: Request, _res: Response, next: NextFunction): void => {
     try {
       if (schema.params) {
         req.params = schema.params.parse(req.params);
@@ -9,7 +19,13 @@ const validate = (schema: any = {}) => {
 
       if (schema.query) {
         const parsedQuery = schema.query.parse(req.query);
-        Object.keys(req.query).forEach((key) => delete req.query[key]);
+
+        // Clean out original unparsed keys safely
+        for (const key of Object.keys(req.query)) {
+          delete req.query[key];
+        }
+
+        // Assign newly parsed and cast values
         Object.assign(req.query, parsedQuery);
       }
 
@@ -17,12 +33,19 @@ const validate = (schema: any = {}) => {
         req.body = schema.body.parse(req.body);
       }
 
-      return next();
-    } catch (error: any) {
-      error.httpStatusCode = 400;
-      error.value = true;
-      error.type = 'validation';
-      return next(error);
+      next();
+    } catch (error: unknown) {
+      const validationError = error as Error & {
+        httpStatusCode?: number;
+        value?: boolean;
+        type?: string;
+      };
+
+      validationError.httpStatusCode = 400;
+      validationError.value = true;
+      validationError.type = 'validation';
+
+      next(validationError);
     }
   };
 };
