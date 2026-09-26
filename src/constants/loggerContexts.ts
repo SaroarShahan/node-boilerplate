@@ -20,6 +20,7 @@ const loggerContexts = {
   deletePermission: 'PermissionController.deletePermission',
   register: 'AuthController.register',
   login: 'AuthController.login',
+  uploadFile: 'UploadController.uploadFile',
 };
 
 export { loggerContexts };
