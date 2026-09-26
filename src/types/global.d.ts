@@ -12,6 +12,8 @@ declare global {
         role: string | null;
         permissions: string[];
       };
+      file?: Multer.File;
+      files?: Multer.File[] | { [fieldname: string]: Multer.File[] };
     }
   }
 }
