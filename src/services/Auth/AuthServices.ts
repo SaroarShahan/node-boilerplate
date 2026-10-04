@@ -5,7 +5,7 @@ import type { AppHttpError } from '../../types/app';
 import { generateToken } from '../../utils/jwt';
 
 class AuthServices {
-  static instance: any;
+  static instance: AuthServices;
 
   constructor() {
     if (AuthServices.instance) return AuthServices.instance;
