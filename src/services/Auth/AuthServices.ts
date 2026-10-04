@@ -5,12 +5,16 @@ import type { AppHttpError } from '../../types/app';
 import { generateToken } from '../../utils/jwt';
 
 class AuthServices {
-  static instance: AuthServices;
+  private static _instance: AuthServices;
 
-  constructor() {
-    if (AuthServices.instance) return AuthServices.instance;
+  private constructor() {}
 
-    AuthServices.instance = this;
+  static getInstance(): AuthServices {
+    if (!AuthServices._instance) {
+      AuthServices._instance = new AuthServices();
+    }
+
+    return AuthServices._instance;
   }
 
   async findSafeUser(id) {

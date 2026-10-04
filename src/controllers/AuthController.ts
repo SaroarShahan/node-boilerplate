@@ -6,7 +6,7 @@ import BaseController from '../utils/BaseController';
 import { logger } from '../utils/logger';
 import { ResponseMessage } from '../utils/ResponseMessage';
 
-const authServices = new AuthServices();
+const authServices = AuthServices.getInstance();
 
 class AuthController extends BaseController {
   register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
