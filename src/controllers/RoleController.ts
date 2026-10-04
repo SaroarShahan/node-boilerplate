@@ -6,7 +6,7 @@ import BaseController from '../utils/BaseController';
 import { logger } from '../utils/logger';
 import { ResponseMessage } from '../utils/ResponseMessage';
 
-const rolesServices = new RolesServices();
+const rolesServices = RolesServices.getInstance();
 
 class RoleController extends BaseController {
   getAllRoles = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

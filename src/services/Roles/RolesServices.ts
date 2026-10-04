@@ -12,14 +12,19 @@ const roleInclude = [
 ];
 
 class RolesServices {
-  static instance: any;
-  rolesRepository: any;
+  private static _instance: RolesServices;
+  rolesRepository: RolesRepository;
 
-  constructor() {
-    if (RolesServices.instance) return RolesServices.instance;
-
+  private constructor() {
     this.rolesRepository = new RolesRepository();
-    RolesServices.instance = this;
+  }
+
+  static getInstance(): RolesServices {
+    if (!RolesServices._instance) {
+      RolesServices._instance = new RolesServices();
+    }
+
+    return RolesServices._instance;
   }
 
   async getAllRoles(req) {
