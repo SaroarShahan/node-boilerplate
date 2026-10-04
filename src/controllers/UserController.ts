@@ -6,7 +6,7 @@ import BaseController from '../utils/BaseController';
 import { logger } from '../utils/logger';
 import { ResponseMessage } from '../utils/ResponseMessage';
 
-const usersServices = new UsersServices();
+const usersServices = UsersServices.getInstance();
 
 class UserController extends BaseController {
   getAllUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

@@ -1,14 +1,19 @@
 import { UsersRepository } from '../../respository/Users/UsersRepository';
 
 class UsersServices {
-  static instance: any;
-  usersRepository: any;
+  private static _instance: UsersServices;
+  usersRepository: UsersRepository;
 
-  constructor() {
-    if (UsersServices.instance) return UsersServices.instance;
-
+  private constructor() {
     this.usersRepository = new UsersRepository();
-    UsersServices.instance = this;
+  }
+
+  static getInstance(): UsersServices {
+    if (!UsersServices._instance) {
+      UsersServices._instance = new UsersServices();
+    }
+
+    return UsersServices._instance;
   }
 
   async getAllUsers(req) {
