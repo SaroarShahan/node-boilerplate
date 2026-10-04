@@ -3,14 +3,19 @@ import { PermissionsRepository } from './../../respository/Permissions/Permissio
 import type { AppHttpError } from '../../types/app';
 
 class PermissionServices {
-  static instance: any;
-  permissionsRepository: any;
+  private static _instance: PermissionServices;
+  permissionsRepository: PermissionsRepository;
 
-  constructor() {
-    if (PermissionServices.instance) return PermissionServices.instance;
-
+  private constructor() {
     this.permissionsRepository = new PermissionsRepository();
-    PermissionServices.instance = this;
+  }
+
+  static getInstance(): PermissionServices {
+    if (!PermissionServices._instance) {
+      PermissionServices._instance = new PermissionServices();
+    }
+
+    return PermissionServices._instance;
   }
 
   async getAllPermissions(req) {

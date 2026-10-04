@@ -6,7 +6,7 @@ import BaseController from '../utils/BaseController';
 import { logger } from '../utils/logger';
 import { ResponseMessage } from '../utils/ResponseMessage';
 
-const permissionServices = new PermissionServices();
+const permissionServices = PermissionServices.getInstance();
 
 class PermissionsController extends BaseController {
   getAllPermissions = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
