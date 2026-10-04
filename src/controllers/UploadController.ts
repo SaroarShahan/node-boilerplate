@@ -6,7 +6,7 @@ import BaseController from '~/utils/BaseController';
 import { logger } from '~/utils/logger';
 import { ResponseMessage } from '~/utils/ResponseMessage';
 
-const uploadService = new UploadService();
+const uploadService = UploadService.getInstance();
 
 export class UploadController extends BaseController {
   uploadFile = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

@@ -5,12 +5,16 @@ import { nanoid } from 'nanoid';
 import { BUCKET_NAME, minioClient } from '~/utils/minioClient';
 
 class UploadService {
-  static instance: UploadService;
+  private static _instance: UploadService;
 
-  constructor() {
-    if (UploadService.instance) return UploadService.instance;
+  private constructor() {}
 
-    UploadService.instance = this;
+  static getInstance(): UploadService {
+    if (!UploadService._instance) {
+      UploadService._instance = new UploadService();
+    }
+
+    return UploadService._instance;
   }
 
   async uploadFile(req: Request & { file: Express.Multer.File }) {
