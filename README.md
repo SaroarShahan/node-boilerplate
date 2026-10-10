@@ -35,11 +35,11 @@ database migrations, seed data, and file uploads.
 ## Docs
 
 - [Getting Started](docs/getting-started.md)
-- [Docker Guide](docs/docker.md)
+- [Project Structure](docs/project-structure.md)
+- [Scripts](docs/scripts.md)
 - [API Reference](docs/api.md)
 - [RBAC Guide](docs/rbac.md)
-- [Scripts](docs/scripts.md)
-- [Project Structure](docs/project-structure.md)
+- [Docker Guide](docs/docker.md)
 
 ## Quick Start
 
