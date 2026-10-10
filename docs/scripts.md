@@ -1,5 +1,9 @@
 # Scripts
 
+Run commands from the repository root. npm automatically uses the scripts in `package.json`.
+Commands that modify the database should be run only after the database connection values in
+`.env` are configured. See [Getting Started](getting-started.md) for the recommended order.
+
 ## Development
 
 Start the development server:
@@ -8,11 +12,16 @@ Start the development server:
 npm run dev
 ```
 
+The development command runs `tsx watch`, so TypeScript changes restart the API automatically.
+
 Build the application:
 
 ```bash
 npm run build
 ```
+
+The compiled output is written to `dist/`. The production start command runs the compiled
+application and should be used only after a successful build.
 
 Start the production server:
 
@@ -38,7 +47,12 @@ Format the project:
 npm run format
 ```
 
+Biome formats the repository in place. Review the resulting changes before committing.
+
 ## Sequelize Commands
+
+Sequelize CLI uses `.sequelizerc` to load the TypeScript configuration and locate the models,
+migrations, and seeders.
 
 Run migrations:
 
@@ -57,6 +71,8 @@ Undo all migrations:
 ```bash
 npm run migrate:undo:all
 ```
+
+This reverts every applied migration. Use it only when intentionally rebuilding the local schema.
 
 Generate a migration:
 
@@ -78,6 +94,9 @@ Run seeders:
 npm run seed
 ```
 
+Seeders create the initial RBAC data and admin user. Set `SEED_ADMIN_PASSWORD` before running
+`npm run seed` when you do not want the default local password.
+
 Undo the latest seeder:
 
 ```bash
@@ -90,7 +109,26 @@ Undo all seeders:
 npm run seed:undo:all
 ```
 
-## Command Summary
+## Recommended first-run sequence
+
+```bash
+npm install
+cp .env.example .env
+npm run migrate
+npm run seed
+npm run dev
+```
+
+For a clean local rebuild:
+
+```bash
+npm run seed:undo:all
+npm run migrate:undo:all
+npm run migrate
+npm run seed
+```
+
+## Command summary
 
 ```bash
 npm run dev

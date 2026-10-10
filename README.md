@@ -1,6 +1,8 @@
 # node-boilerplate
 
-Node.js REST API boilerplate built with TypeScript, Express, Sequelize, and PostgreSQL.
+Node.js REST API boilerplate built with TypeScript, Express, Sequelize, and PostgreSQL. It provides
+a ready-to-extend foundation for APIs that need authentication, authorization, validation,
+database migrations, seed data, and file uploads.
 
 ## Stack
 
@@ -41,6 +43,9 @@ Node.js REST API boilerplate built with TypeScript, Express, Sequelize, and Post
 
 ## Quick Start
 
+For a complete first-run walkthrough, read [Getting Started](docs/getting-started.md). The short
+version is below.
+
 ### Install dependencies
 
 ```bash
@@ -67,6 +72,9 @@ DB_PORT=5432
 PORT=8080
 CORSURL=http://localhost:3000
 ```
+
+The API requires a running PostgreSQL database. MinIO is only required when using file uploads.
+Do not commit `.env`; it contains local credentials and secrets.
 
 ## License
 
