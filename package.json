@@ -70,5 +70,10 @@
   },
   "volta": {
     "node": ">=24.18.1 <25"
+  },
+  "allowScripts": {
+    "bcrypt@6.0.0": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true
   }
 }
