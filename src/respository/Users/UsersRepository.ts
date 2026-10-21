@@ -2,7 +2,7 @@ import { UserModel } from '../../models';
 import { usersQueryBuilder } from './usersQueryBuilder';
 
 class UsersRepository {
-  static instance: any;
+  static instance: UsersRepository;
 
   constructor() {
     if (UsersRepository.instance) return UsersRepository.instance;
