@@ -1,8 +1,10 @@
 import bcrypt from 'bcrypt';
 
-import { RoleModel, UserModel } from './../../models';
-import type { AppHttpError } from '../../types/app';
-import { generateToken } from '../../utils/jwt';
+import Models from '~/models';
+import type { AppHttpError } from '~/types/app';
+import { generateToken } from '~/utils/jwt';
+
+const { UserModel, RoleModel } = Models;
 
 class AuthServices {
   private static _instance: AuthServices;

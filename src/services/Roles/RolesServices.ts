@@ -1,6 +1,8 @@
-import { PermissionModel, sequelize, UserModel } from '../../models';
-import { RolesRepository } from './../../respository/Roles/RolesRepository';
-import type { AppHttpError } from '../../types/app';
+import Models from '~/models';
+import { RolesRepository } from '~/respository/Roles/RolesRepository';
+import type { AppHttpError } from '~/types/app';
+
+const { PermissionModel, UserModel, sequelize } = Models;
 
 const roleInclude = [
   {
@@ -79,7 +81,7 @@ class RolesServices {
 
       return this.getRole(role.id);
     } catch (error) {
-      if (!(transaction as any).finished) await transaction.rollback();
+      if (!Reflect.get(transaction, 'finished')) await transaction.rollback();
       throw error;
     }
   }
@@ -93,7 +95,7 @@ class RolesServices {
 
     try {
       let permissionIds = role.permissionIds;
-      let permissions: any;
+      let permissions: Awaited<ReturnType<typeof PermissionModel.findAll>> | undefined;
 
       if (typeof data.permissions !== 'undefined') {
         const permissionResult = await this.getValidPermissions(data.permissions, transaction);
@@ -117,7 +119,7 @@ class RolesServices {
       await transaction.commit();
       return this.getRole(id);
     } catch (error) {
-      if (!(transaction as any).finished) await transaction.rollback();
+      if (!Reflect.get(transaction, 'finished')) await transaction.rollback();
       throw error;
     }
   }
