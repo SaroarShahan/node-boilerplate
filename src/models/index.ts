@@ -18,6 +18,7 @@ const sequelize = config.use_env_variable
 
 type ModelFactory = (sequelize: Sequelize, dataTypes: typeof DataTypes) => ModelStatic<Model>;
 
+// biome-ignore lint/suspicious/noExplicitAny: dynamic model registry
 const db: any = {};
 const basename = path.basename(__filename);
 
