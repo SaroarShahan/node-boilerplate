@@ -1,5 +1,7 @@
-import { PermissionModel, RoleModel } from '../../models';
+import Models from '~/models';
 import { buildRolesQuery } from './rolesQueryBuilder';
+
+const { RoleModel, PermissionModel } = Models;
 
 class RolesRepository {
   static instance: RolesRepository;

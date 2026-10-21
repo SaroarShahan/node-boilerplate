@@ -2,7 +2,16 @@ import { Op } from 'sequelize';
 
 import { limitAndOffsetBuilder } from './../../utils';
 
-const permissionsQueryBuilder = (query: any = {}) => ({
+type PermissionQuery = {
+  module?: string;
+  search?: string;
+  sortBy?: string;
+  orderBy?: string;
+  limit?: string | number;
+  page?: string | number;
+};
+
+const permissionsQueryBuilder = (query: PermissionQuery = {}) => ({
   where: {
     ...(query.module && { module: query.module }),
     ...(query.search && {

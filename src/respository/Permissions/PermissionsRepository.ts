@@ -1,5 +1,7 @@
-import { PermissionModel } from '../../models';
+import Models from '~/models';
 import { permissionsQueryBuilder } from './permissionsQueryBuilder';
+
+const { PermissionModel } = Models;
 
 class PermissionsRepository {
   static instance: PermissionsRepository;

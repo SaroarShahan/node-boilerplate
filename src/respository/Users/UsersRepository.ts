@@ -1,5 +1,7 @@
-import { UserModel } from '../../models';
+import Models from '~/models';
 import { usersQueryBuilder } from './usersQueryBuilder';
+
+const { UserModel } = Models;
 
 class UsersRepository {
   static instance: UsersRepository;
