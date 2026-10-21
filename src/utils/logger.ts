@@ -14,7 +14,12 @@ const log = (level, payload) => {
     logPayload.error = serializeError(payload.error);
   }
 
-  console[level](logPayload);
+  const output = JSON.stringify(logPayload);
+  if (level === 'error') {
+    process.stderr.write(`${output}\n`);
+  } else {
+    process.stdout.write(`${output}\n`);
+  }
 };
 
 const logger = {
