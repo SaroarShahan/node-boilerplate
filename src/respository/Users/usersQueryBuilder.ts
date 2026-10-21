@@ -1,4 +1,4 @@
-import { limitAndOffsetBuilder } from '../../utils';
+import { limitAndOffsetBuilder } from '~/utils';
 
 type UsersQuery = {
   status?: string;
