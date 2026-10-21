@@ -2,7 +2,7 @@ import { PermissionModel } from '../../models';
 import { permissionsQueryBuilder } from './permissionsQueryBuilder';
 
 class PermissionsRepository {
-  static instance: any;
+  static instance: PermissionsRepository;
 
   constructor() {
     if (PermissionsRepository.instance) return PermissionsRepository.instance;
