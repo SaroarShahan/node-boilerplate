@@ -4,6 +4,10 @@ import { Sequelize } from 'sequelize';
 
 dotenv.config();
 
+const databaseLogger = (...messages: unknown[]) => {
+  process.stdout.write(`${messages.join(' ')}\n`);
+};
+
 const sequelize = new Sequelize(
   process.env.DB_NAME || '',
   process.env.DB_USER || '',
@@ -12,7 +16,7 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     dialect: process.env.DB_DIALECT as Dialect,
-    logging: process.env.DB_LOGGING === 'true' ? console.log : false,
+    logging: process.env.DB_LOGGING === 'true' ? databaseLogger : false,
   },
 );
 

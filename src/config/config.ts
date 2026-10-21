@@ -3,6 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const useSSL = JSON.parse(process.env.MINIO_USE_SSL || 'false');
+const databaseLogger = (...messages: unknown[]) => {
+  process.stdout.write(`${messages.join(' ')}\n`);
+};
 
 const config = {
   development: {
@@ -12,7 +15,7 @@ const config = {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
     dialect: process.env.DB_DIALECT,
-    logging: console.log,
+    logging: databaseLogger,
   },
   apiBaseUri: '/api/v1',
   corsOptions: {
