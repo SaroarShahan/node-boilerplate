@@ -32,7 +32,7 @@ const createRoleModel = (sequelize, DataTypes) => {
         type: DataTypes.STRING(50),
         allowNull: false,
         unique: true,
-        set(this: any, value) {
+        set(this: Model, value) {
           this.setDataValue('name', typeof value === 'string' ? value.trim() : value);
         },
         validate: {
@@ -43,10 +43,10 @@ const createRoleModel = (sequelize, DataTypes) => {
       },
       permissionIds: {
         type: DataTypes.VIRTUAL,
-        get(this: any) {
+        get(this: Model) {
           return this.getDataValue('permissionIds') || [];
         },
-        set(this: any, value) {
+        set(this: Model, value) {
           this.setDataValue('permissionIds', value);
         },
         validate: {
