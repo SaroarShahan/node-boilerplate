@@ -1,4 +1,4 @@
-import { UsersRepository } from '../../respository/Users/UsersRepository';
+import { UsersRepository } from '~/respository/Users/UsersRepository';
 
 class UsersServices {
   private static _instance: UsersServices;
