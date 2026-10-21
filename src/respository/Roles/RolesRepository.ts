@@ -2,7 +2,7 @@ import { PermissionModel, RoleModel } from '../../models';
 import { buildRolesQuery } from './rolesQueryBuilder';
 
 class RolesRepository {
-  static instance: any;
+  static instance: RolesRepository;
 
   constructor() {
     if (RolesRepository.instance) return RolesRepository.instance;
