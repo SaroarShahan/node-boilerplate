@@ -1,4 +1,4 @@
-import { AUTHORIZATION_POLICIES, USER_ROLES } from '../constants';
+import { AUTHORIZATION_POLICIES, USER_ROLES } from '~/constants';
 
 interface AuthorizationUser {
   id: string | number;
