@@ -1,17 +1,17 @@
 import type { NextFunction, Request, Response } from 'express';
 import { BaseError } from 'sequelize';
 
-import { appCode } from '../constants/AppCode';
-import { httpStatus } from '../constants/HttpStatusCode';
-import { CreateResponse } from '../utils/CreateResponse';
-import { logger } from '../utils/logger';
-import { ResponseMessage } from '../utils/ResponseMessage';
+import { appCode } from '~/constants/AppCode';
+import { httpStatus } from '~/constants/HttpStatusCode';
+import { CreateResponse } from '~/utils/CreateResponse';
+import { logger } from '~/utils/logger';
+import { ResponseMessage } from '~/utils/ResponseMessage';
 
 type AppErrorLike = Error & {
   appCode?: number;
   httpStatusCode?: number;
-  errorCode?: string;
-  additionalData?: unknown;
+  errorCode?: number;
+  additionalData?: ResponseMessage['additionalData'];
   errorSource?: string;
   value?: unknown;
   error?: {
@@ -36,7 +36,7 @@ const exceptionHandling = (
   response.appCode = err instanceof BaseError ? appCode.error : err.appCode || appCode.error;
   response.httpStatusCode = err.httpStatusCode || httpStatus.internalServerError;
   response.message = err.message || 'Internal server error';
-  response.errorCode = err.errorCode || '';
+  response.errorCode = err.errorCode;
   response.additionalData = err.additionalData;
   response.errorSource = err.errorSource;
 
