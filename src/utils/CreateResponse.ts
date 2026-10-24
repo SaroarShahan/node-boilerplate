@@ -1,6 +1,7 @@
 import rTracer from 'cls-rtracer';
-import { appCode } from './../constants/AppCode';
-import { httpStatus } from './../constants/HttpStatusCode';
+
+import { appCode } from '~/constants/AppCode';
+import { httpStatus } from '~/constants/HttpStatusCode';
 
 class CreateResponse {
   success(res, ResponseMessageObj) {
