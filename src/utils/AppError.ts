@@ -1,4 +1,4 @@
-import { httpStatus } from './../constants/HttpStatusCode';
+import { httpStatus } from '~/constants/HttpStatusCode';
 
 class AppError extends Error {
   isOperational;
