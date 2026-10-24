@@ -1,7 +1,7 @@
 import { createSecretKey } from 'node:crypto';
 import { decodeJwt, jwtVerify, SignJWT } from 'jose';
 
-import configByEnv from '../config/config';
+import configByEnv from '~/config/config';
 
 const env = process.env.NODE_ENV || 'development';
 const config = configByEnv[env];
